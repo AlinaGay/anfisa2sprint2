@@ -6,8 +6,7 @@ from ice_cream.models import IceCream
 
 def index(request):
     template = 'homepage/index.html'
-    ice_cream_list = IceCream.objects.values(
-        'title', 'id', 'description').filter(
+    ice_cream_list = IceCream.objects.values('id', 'title', 'category__title').filter(
         (Q(is_on_main=True) & Q(is_published=True))
         | (Q(title__contains='пломбир') & Q(is_published=True))
     ).order_by('title')[:3]
