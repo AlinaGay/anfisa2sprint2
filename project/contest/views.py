@@ -4,7 +4,7 @@ from .forms import ContestForm
 
 
 def proposal_create(request):
-    form = ContestForm(request.GET or None)
+    form = ContestForm(request.POST or None)
     if form.is_valid():
         pass
     context = {'form': form}
