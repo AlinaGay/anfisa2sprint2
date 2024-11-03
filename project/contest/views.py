@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from .forms import ContestForm
+from .models import Contest
 
 
 def proposal_create(request):
@@ -11,5 +12,7 @@ def proposal_create(request):
     return render(request, 'contest/form.html', context)
 
 
-def accepted(request):
-    return render(request, 'contest/proposal_accepted.html')
+def proposal_list(request):
+    contests = Contest.objects.all().order_by('id')
+    context = {'contests': contests}
+    return render(request, 'contest/contest_list.html', context)

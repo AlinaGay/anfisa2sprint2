@@ -6,5 +6,5 @@ app_name = 'contest'
 
 urlpatterns = [
     path('', views.proposal_create, name='create'),
-    path('accepted/', views.accepted, name='accepted'),
+    path('list/', views.proposal_list, name='list'),
 ]
