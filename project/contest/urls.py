@@ -5,6 +5,7 @@ from . import views
 app_name = 'contest'
 
 urlpatterns = [
-    path('', views.proposal_create, name='create'),
+    path('', views.proposal, name='create'),
     path('list/', views.proposal_list, name='list'),
+    path('<int:pk>/edit/', views.proposal, name='edit'),
 ]

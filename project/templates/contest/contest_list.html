@@ -5,9 +5,13 @@
 {% endblock %}
 
 {% block content %}
-    {% for contest in contests %}
-        <div id="{{ contest.id }}" class="item">
-        {{ contest.id }}, {{ contest.title }}, {{ contest.price }}, {{ contest.description }}, {{ contest.comment }}
-        </div>
-    {% endfor %}
+  {% for proposal in contest_proposals %}
+    <div>
+      {{ proposal.id }}, {{ proposal.title }}, {{ proposal.price }},
+      {{ proposal.description }}{% if proposal.comment %}, {{ proposal.comment }}{% endif %}
+      <div>
+        <a href="{% url 'contest:edit' proposal.id %}">Редактировать заявку</a>
+      </div>
+    </div>
+  {% endfor %}
 {% endblock %}

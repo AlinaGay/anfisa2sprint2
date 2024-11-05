@@ -4,15 +4,22 @@ from .forms import ContestForm
 from .models import Contest
 
 
-def proposal_create(request):
+def proposal(request):
+    # Допишите функцию, чтобы она могла работать как на создание заявки,
+    # так и на редактирование.
     form = ContestForm(request.POST or None)
-    if form.is_valid():
-        pass
     context = {'form': form}
+    if form.is_valid():
+        form.save()
     return render(request, 'contest/form.html', context)
 
 
+def delete_proposal(request):
+    # Допишите функцию для удаления заявок.
+    return
+
+
 def proposal_list(request):
-    contests = Contest.objects.all().order_by('id')
-    context = {'contests': contests}
+    contest_proposals = Contest.objects.order_by('id')
+    context = {'contest_proposals': contest_proposals}
     return render(request, 'contest/contest_list.html', context)
