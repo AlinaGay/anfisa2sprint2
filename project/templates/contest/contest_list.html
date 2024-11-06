@@ -11,6 +11,8 @@
       {{ proposal.description }}{% if proposal.comment %}, {{ proposal.comment }}{% endif %}
       <div>
         <a href="{% url 'contest:edit' proposal.id %}">Редактировать заявку</a>
+         | 
+        <a href="{% url 'contest:delete' proposal.id %}">Удалить заявку</a>
       </div>
     </div>
   {% endfor %}
